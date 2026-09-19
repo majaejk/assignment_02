@@ -184,8 +184,16 @@ def summarize_by_item(cleaned_data: list[dict]) -> list[dict]:
       `key=lambda entry: (-entry["revenue"], entry["item"])`. The tuple reads as
       "sort by revenue, biggest first, and use the name to break ties."
     """
-    # TODO: your code here
-    pass
+    summarized_by_item = []
+    for row in cleaned_data:
+        if row["item"] not in [entry["item"] for entry in summarized_by_item]:
+          new_entry = {'item': row['item'], 'units_sold': 0, 'revenue': 0.0}
+          summarized_by_item.append(new_entry)
+        active_entry = [entry for entry in summarized_by_item if entry["item"] == row["item"]][0]
+        active_entry['units_sold'] += row['qty']
+        active_entry['revenue'] += row['total_revenue']
+    return sorted(summarized_by_item, key=lambda entry: (-entry["revenue"], entry["item"]))
+
 
 
 def summarize_by_day(cleaned_data: list[dict]) -> list[dict]:
@@ -218,8 +226,15 @@ def summarize_by_day(cleaned_data: list[dict]) -> list[dict]:
       twice under two spellings. Do still guard the "first time I have seen this
       date" case, or the first row of each day has nothing to add itself to.
     """
-    # TODO: your code here
-    pass
+    summarized_by_date = []
+    for row in cleaned_data:
+      if row["date"] not in [entry["date"] for entry in summarized_by_date]:
+        new_entry = {'date': row['date'], 'units_sold': 0, 'revenue': 0.0}
+        summarized_by_date.append(new_entry)
+      active_entry = [entry for entry in summarized_by_date if entry["date"] == row["date"]][0]
+      active_entry['units_sold'] += row['qty']
+      active_entry['revenue'] += row['total_revenue']
+    return sorted(summarized_by_date, key=lambda entry: entry["date"])
 
 
 def find_top_entry(summary: list[dict], field: str = "revenue") -> dict:
@@ -252,5 +267,10 @@ def find_top_entry(summary: list[dict], field: str = "revenue") -> dict:
       by revenue. It is only sorted by *revenue*, so that answer is wrong the moment
       someone asks for `units_sold`.
     """
-    # TODO: your code here
-    pass
+    top_entry = {}
+    for entry in summary:
+      if entry == summary[0]:
+        top_entry = entry
+      elif entry[field] > top_entry[field]:
+        top_entry = entry
+    return top_entry

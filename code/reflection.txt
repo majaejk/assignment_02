@@ -1,6 +1,10 @@
-Write your reflection here.
-
-See reflection.md for what makes a good reflection — be specific, use the
-terminology from this assignment (package, module, ETL, coercion, public API,
-relative import, accumulator, group by, unit vs. integration test), and make it
-actionable.
+The tasks I struggled most with in this assignment was the 
+summarize_by_item (and by nature of the task summarize_by_day)
+accumulator construction. I understand the value of seperating the
+constuction of the dictionary from the accumulator however it took 
+me a moment to appropriatly manage the list selector. The public API
+and work in __init__ was good content development from the lecture
+and well explained. The other program that gave me issue was the 
+main_daily_report integration test. This was a result of poor instruction 
+reading on my part but was eventually solved by directly copying the format
+from the README. 
