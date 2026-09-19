@@ -40,7 +40,14 @@ Before running:  pip install -r requirements.txt
 # you need a calculation this file cannot get by calling the package, the
 # calculation belongs in sales_pipeline/transform.py.
 import sys
-from sales_pipeline import clean_sales_data, calculate_total_revenue, summarize_by_item, summarize_by_day, find_top_entry, print_sales_table, print_day_table, print_item_table, get_raw_sales_data
+from sales_pipeline import (
+    clean_sales_data,
+    calculate_total_revenue,
+    summarize_by_day,
+    find_top_entry,
+    print_day_table,
+    get_raw_sales_data,
+)
 
 seed = None
 if len(sys.argv) > 1 and sys.argv[1].strip() != "":

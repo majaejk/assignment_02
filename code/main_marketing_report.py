@@ -18,7 +18,9 @@ Before running:  pip install -r requirements.txt
 """
 
 import sys
-from sales_pipeline import clean_sales_data, summarize_by_item, find_top_entry, print_item_table, get_raw_sales_data
+from sales_pipeline import (clean_sales_data, summarize_by_item, 
+                            find_top_entry, print_item_table, 
+                            get_raw_sales_data)
 
 # --- The report ------------------------------------------------------------------
 #

@@ -18,7 +18,8 @@ Before running:  pip install -r requirements.txt
 """
 
 import sys
-from sales_pipeline import clean_sales_data, calculate_total_revenue, print_sales_table, print_day_table, print_item_table, get_raw_sales_data
+from sales_pipeline import (clean_sales_data, calculate_total_revenue, 
+                            print_sales_table, get_raw_sales_data)
 
 # --- Reading the dataset seed ----------------------------------------------------
 #
